@@ -36,6 +36,17 @@ npm run dev
 
 Open `http://localhost:5173`.
 
+## Deploy for free
+
+The included `render.yaml` deploys the React frontend and FastAPI API together
+as one Render Free web service. Connect this repository as a Render Blueprint;
+the build and start settings are already defined.
+
+The free service is intended for demos. Its filesystem is temporary, so SQLite
+records and uploaded files can reset after a restart or redeploy. Before using
+Mimora with real personal documents, move the database and uploads to durable,
+private managed storage.
+
 ## Current extraction boundary
 
 The upload pipeline, review contract, database, and UI are real. The extraction

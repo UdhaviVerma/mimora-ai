@@ -9,6 +9,8 @@ from typing import Any
 
 from fastapi import FastAPI, File, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -280,3 +282,19 @@ def calendar() -> dict[str, list[dict[str, Any]]]:
     for row in rows:
         grouped.setdefault(row["date"], []).append(dict(row))
     return grouped
+
+
+# In production the React build is served by the same FastAPI process. Keeping
+# the frontend and API on one origin makes the free deployment simple and avoids
+# cross-origin configuration. API routes above take precedence over this SPA
+# fallback.
+DIST_DIR = ROOT / "dist"
+if DIST_DIR.exists():
+    app.mount("/assets", StaticFiles(directory=DIST_DIR / "assets"), name="assets")
+
+    @app.get("/{path:path}", include_in_schema=False)
+    def frontend(path: str) -> FileResponse:
+        requested = DIST_DIR / path
+        if path and requested.is_file():
+            return FileResponse(requested)
+        return FileResponse(DIST_DIR / "index.html")
