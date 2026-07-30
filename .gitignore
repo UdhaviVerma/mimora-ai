@@ -1,0 +1,9 @@
+node_modules/
+dist/
+database/*.db
+uploads/*
+!uploads/.gitkeep
+__pycache__/
+*.pyc
+.venv/
+work/
