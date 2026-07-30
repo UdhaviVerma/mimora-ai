@@ -158,8 +158,8 @@ function Sidebar({ page, setPage, sections, selectedSection, setSelectedSection,
           ))}
         </nav>
         <div className="sidebar-foot">
-          <div className="avatar">AK</div>
-          <div><strong>Arun Kumar</strong><span>Personal workspace</span></div>
+          <div className="avatar">UV</div>
+          <div><strong>UVIV</strong><span>Personal workspace</span></div>
           <MoreHorizontal size={18} />
         </div>
       </aside>
@@ -245,7 +245,7 @@ function Dashboard({ sections, cards, onDone, setPage, setSelectedSection, selec
   return (
     <div className="dashboard">
       <section className="welcome">
-        <div><span className="eyebrow">Wednesday, 29 July</span><h2>Good morning, Arun.</h2><p>Here’s what needs your attention today.</p></div>
+        <div><span className="eyebrow">Wednesday, 29 July</span><h2>Good morning, UVIV.</h2><p>Here’s what needs your attention today.</p></div>
         <div className="streak"><Sparkles size={18} /><strong>7 day streak</strong><span>You’re all caught up</span></div>
       </section>
       <section className="stats-grid">
